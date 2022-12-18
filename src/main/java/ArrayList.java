@@ -40,12 +40,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
-        if (elements.length == size + 1) {
+        if (elements.length == size) {
             Object[] newArray = new Object[elements.length * 2];
             System.arraycopy(elements, 0, newArray, 0, size);
             elements = newArray;
         }
-        System.arraycopy(elements, 0, element, index + 1, size - 1);
+        System.arraycopy(elements, index, elements, index + 1, size - index);
         elements[index] = element;
         size++;
     }

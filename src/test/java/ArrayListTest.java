@@ -1,48 +1,76 @@
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayListTest {
+    List<Integer> elements = new ArrayList<>();
 
-    @org.junit.jupiter.api.Test
-    void add() {
+    @BeforeEach
+    void setUp() {
+        for (int i = 1; i <= 10000; i++) {
+            elements.add(i);
+        }
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testAdd() {
+        assertEquals(1, elements.get(0));
+        assertEquals(10000, elements.get(9999));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
+    void testAddMiddle() {
+        elements.add(2, 10);
+        assertEquals(10, elements.get(2));
+    }
+
+    @Test
     void set() {
+        elements.set(100, 1);
+        assertEquals(1, elements.get(100));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void get() {
+        assertEquals(6, elements.get(5));
     }
 
-    @org.junit.jupiter.api.Test
-    void getFirst() {
+    @Test
+    void testGetFirst() {
+        assertEquals(1, elements.getFirst());
     }
 
-    @org.junit.jupiter.api.Test
-    void getLast() {
+    @Test
+    void testGetLast() {
+        assertEquals(10000, elements.getLast());
     }
 
-    @org.junit.jupiter.api.Test
-    void remove() {
+    @Test
+    void testRemove() {
+        assertEquals(11, elements.remove(10));
     }
 
-    @org.junit.jupiter.api.Test
-    void contains() {
+    @Test
+    void testContains() {
+        assertEquals(true, elements.contains(9));
     }
 
-    @org.junit.jupiter.api.Test
-    void isEmpty() {
+    @Test
+    void testIsEmpty() {
+        assertEquals(false, elements.isEmpty());
     }
 
-    @org.junit.jupiter.api.Test
-    void size() {
+    @Test
+    void testSize() {
+        assertEquals(10000, elements.size());
     }
 
-    @org.junit.jupiter.api.Test
-    void clear() {
+    @Test
+    void testClear() {
+        elements.clear();
+        assertEquals(null, elements.get(5));
+
     }
 }
